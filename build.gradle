@@ -97,9 +97,9 @@ subprojects { subProject ->
 
     defaultTasks 'build'
 
-	if ( subProject.name.startsWith( 'hibernate-gradle-plugin' ) ) {
-		apply plugin: 'groovy'
-	}
+    if ( subProject.name.startsWith( 'hibernate-gradle-plugin' ) ) {
+        apply plugin: 'groovy'
+    }
 
     group = 'org.hibernate'
     version = rootProject.hibernateTargetVersion

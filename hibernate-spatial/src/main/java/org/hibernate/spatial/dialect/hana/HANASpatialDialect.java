@@ -162,6 +162,11 @@ public class HANASpatialDialect extends HANAColumnStoreDialect implements Spatia
 	}
 
 	@Override
+	public String getGeometryTypeSQL(String columnName) {
+		return columnName + ".ST_GeometryType() = ?";
+	}
+
+	@Override
 	public boolean supportsFiltering() {
 		return true;
 	}

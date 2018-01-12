@@ -70,7 +70,6 @@ public interface SpatialDialect extends Serializable {
 	 */
 	public String getHavingSridSQL(String columnName);
 
-
 	/**
 	 * Returns the SQL fragment when parsing a <code>IsEmptyExpression</code> or
 	 * <code>IsNotEmpty</code> expression.
@@ -81,6 +80,15 @@ public interface SpatialDialect extends Serializable {
 	 * @return The SQL fragment for the isempty function
 	 */
 	public String getIsEmptySQL(String columnName, boolean isEmpty);
+
+	/**
+	 * Returns the SQL fragment when parsing an <code>GeometryTypeExpression</code>.
+	 *
+	 * @param columnName the geometry column
+	 *
+	 * @return The SQL fragment for the geometrytype function
+	 */
+	public String getGeometryTypeSQL(String columnName);
 
 	/**
 	 * Returns true if this <code>SpatialDialect</code> supports a specific filtering function.

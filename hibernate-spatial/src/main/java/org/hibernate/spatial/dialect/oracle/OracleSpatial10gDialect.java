@@ -10,24 +10,14 @@ package org.hibernate.spatial.dialect.oracle;
 import java.io.Serializable;
 import java.sql.Types;
 import java.util.Map;
-
-import org.geolatte.geom.codec.db.oracle.ConnectionFinder;
-import org.geolatte.geom.codec.db.oracle.OracleJDBCTypeFactory;
-
-import org.jboss.logging.Logger;
-
 import org.hibernate.boot.model.TypeContributions;
-import org.hibernate.boot.registry.selector.spi.StrategySelector;
 import org.hibernate.dialect.Oracle10gDialect;
 import org.hibernate.dialect.function.SQLFunction;
-import org.hibernate.engine.config.spi.ConfigurationService;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.spatial.GeolatteGeometryType;
 import org.hibernate.spatial.HSMessageLogger;
-import org.hibernate.spatial.HibernateSpatialConfigurationSettings;
-import org.hibernate.spatial.JTSGeometryType;
 import org.hibernate.spatial.SpatialDialect;
 import org.hibernate.spatial.SpatialFunction;
+import org.jboss.logging.Logger;
 
 /**
  * Spatial Dialect for Oracle10g databases.
@@ -97,6 +87,11 @@ public class OracleSpatial10gDialect extends Oracle10gDialect implements Spatial
 	@Override
 	public String getIsEmptySQL(String columnName, boolean isEmpty) {
 		return sdoSupport.getIsEmptySQL( columnName, isEmpty );
+	}
+
+	@Override
+	public String getGeometryTypeSQL(String columnName) {
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	@Override

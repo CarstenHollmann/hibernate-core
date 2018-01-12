@@ -7,7 +7,6 @@
 package org.hibernate.spatial.dialect.postgis;
 
 import java.util.Map;
-
 import org.hibernate.boot.model.TypeContributions;
 import org.hibernate.dialect.PostgreSQL92Dialect;
 import org.hibernate.dialect.function.SQLFunction;
@@ -130,6 +129,19 @@ public class PostgisPG92Dialect extends PostgreSQL92Dialect implements SpatialDi
 	@Override
 	public String getIsEmptySQL(String columnName, boolean isEmpty) {
 		return support.getIsEmptySQL( columnName, isEmpty );
+	}
+
+	/**
+	 * Returns the SQL fragment when parsing a
+	 * <code>GeometryTypeFilterExpression</code> expression.
+	 *
+	 * @param columnName The geometry column
+	 *
+	 * @return The SQL fragment for the geometrytype function
+	 */
+	@Override
+	public String getGeometryTypeSQL(String columnName) {
+		return support.getGeometryTypeSQL( columnName );
 	}
 
 	/**

@@ -7,7 +7,6 @@
 package org.hibernate.spatial.dialect.postgis;
 
 import java.util.Map;
-
 import org.hibernate.boot.model.TypeContributions;
 import org.hibernate.dialect.PostgreSQL82Dialect;
 import org.hibernate.dialect.function.SQLFunction;
@@ -67,6 +66,11 @@ public class PostgisPG82Dialect extends PostgreSQL82Dialect implements SpatialDi
 	@Override
 	public String getIsEmptySQL(String columnName, boolean isEmpty) {
 		return support.getIsEmptySQL( columnName, isEmpty );
+	}
+
+	@Override
+	public String getGeometryTypeSQL(String columnName) {
+		return support.getGeometryTypeSQL( columnName );
 	}
 
 	@Override

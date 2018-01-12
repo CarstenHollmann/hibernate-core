@@ -9,9 +9,6 @@ package org.hibernate.spatial.dialect.oracle;
 import java.io.Serializable;
 import java.sql.Types;
 import java.util.Map;
-
-import org.jboss.logging.Logger;
-
 import org.hibernate.boot.model.TypeContributions;
 import org.hibernate.dialect.Oracle10gDialect;
 import org.hibernate.dialect.function.SQLFunction;
@@ -19,6 +16,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.spatial.HSMessageLogger;
 import org.hibernate.spatial.SpatialDialect;
 import org.hibernate.spatial.SpatialFunction;
+import org.jboss.logging.Logger;
 
 /**
  * A Spatial Dialect for Oracle 10g/11g that uses the "native" SDO spatial operators.
@@ -88,6 +86,11 @@ public class OracleSpatialSDO10gDialect extends Oracle10gDialect implements Spat
 	@Override
 	public String getIsEmptySQL(String columnName, boolean isEmpty) {
 		return sdoSupport.getIsEmptySQL( columnName, isEmpty );
+	}
+
+	@Override
+	public String getGeometryTypeSQL(String columnName) {
+		return sdoSupport.getGeometryTypeSQL( columnName );
 	}
 
 	@Override

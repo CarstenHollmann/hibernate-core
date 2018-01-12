@@ -11,7 +11,6 @@ package org.hibernate.spatial.dialect.sqlserver;
 import org.hibernate.boot.model.TypeContributions;
 import org.hibernate.dialect.SQLServer2008Dialect;
 import org.hibernate.dialect.function.SQLFunctionTemplate;
-
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.spatial.GeolatteGeometryType;
 import org.hibernate.spatial.JTSGeometryType;
@@ -168,6 +167,11 @@ public class SqlServer2008SpatialDialect extends SQLServer2008Dialect implements
 	public String getIsEmptySQL(String columnName, boolean isEmpty) {
 		final String base = "(" + columnName + ".STIsEmpty() ";
 		return isEmpty ? base + " = 1 )" : base + " = 0 )";
+	}
+
+	@Override
+	public String getGeometryTypeSQL(String columnName) {
+		return "(" + columnName + ".STGeometryType() = ?)";
 	}
 
 	@Override

@@ -7,7 +7,6 @@
 package org.hibernate.spatial.dialect.mysql;
 
 import java.util.Map;
-
 import org.hibernate.boot.model.TypeContributions;
 import org.hibernate.dialect.MySQLDialect;
 import org.hibernate.dialect.function.SQLFunction;
@@ -100,6 +99,11 @@ public class MySQLSpatialDialect extends MySQLDialect implements SpatialDialect 
 	public String getIsEmptySQL(String columnName, boolean isEmpty) {
 		final String emptyExpr = " IsEmpty(" + columnName + ") ";
 		return isEmpty ? emptyExpr : "( NOT " + emptyExpr + ")";
+	}
+
+	@Override
+	public String getGeometryTypeSQL(String columnName) {
+		return "( ST_GeometryType(" + columnName + ") = ?)";
 	}
 
 	@Override
